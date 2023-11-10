@@ -2,68 +2,40 @@ import 'package:flutter/material.dart';
 import 'package:motivation_app/screen/home_model.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({
-    super.key,
-    required this.homeModel,
-  });
-   final HomeModel homeModel;
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final List<HomeModel> items = HomeModel.syllabusList;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(100),
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            gradient: const LinearGradient(
-              colors: [
-                Colors.pink,
-                Colors.purple,
-              ],
+        child: AppBar(
+          title: const Text("Motivation App"),
+          centerTitle: true,
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.pink, Colors.purple],
+              ),
+              borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
             ),
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: AppBar(
-            backgroundColor: Colors.transparent,
-            title: const Text("Motivation App"),
-            centerTitle: true,
           ),
         ),
       ),
-      body: Container(
-        height: 120,
-        width: 120,
-        decoration: BoxDecoration(
-          gradient: const LinearGradient(
-            colors: [
-              Colors.pink,
-              Colors.purple,
-            ],
-          ),
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                // image,
-                homeModel.image,
-                width: 50,
-                height: 50,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                // title,
-                homeModel.title,
-                style: const TextStyle(
-                    color: Colors.white, fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-        ),
+      body: ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          final item = items[index];
+          return Card(
+            margin: const EdgeInsets.all(8),
+            child: ListTile(
+              leading: Image.asset(item.image, width: 56, height: 56),
+              title: Text(item.title,
+                  style: const TextStyle(fontWeight: FontWeight.bold)),
+            ),
+          );
+        },
       ),
     );
   }

@@ -15,8 +15,10 @@ class HomeModel {
     HomeModel(title: "New Carrer", image: "assets/new-removebg-preview.png"),
     HomeModel(title: "Blessing", image: "assets/ble-removebg-preview.png"),
     HomeModel(title: "Habit Builder", image: "assets/hab-removebg-preview.png"),
-    HomeModel(
-        title: "Motivational Speeches",
-        image: "assets/moti-removebg-preview.pngg"),
+    HomeModel(title: "Habit Builder", image: "assets/hab-removebg-preview.png"),
+
+    // HomeModel(
+    //     title: "Motivational Speeches",
+    //     image: "assets/moti-removebg-preview.pngg"),
   ];
 }
